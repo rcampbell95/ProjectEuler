@@ -11,8 +11,3 @@ def getWords(filename):
     data[line[0]].append(line)
 
   return(data)
-      
-filename = "wordsEn.txt"
-
-data = getWords(filename)
-
