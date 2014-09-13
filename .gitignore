@@ -1,0 +1,2 @@
+# Ignore compiled python files and folders
+/Anagram/__pycache__
