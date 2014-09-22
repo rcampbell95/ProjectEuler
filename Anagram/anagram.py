@@ -19,26 +19,32 @@ def isSubString(wordToCheck, subString): # This function checks to see if a word
 			# concatenating(sticking them together) them ex: if the character 'g' is found in 'anagram'
 			# it will add 'ana' and 'ram', making 'anaram'
 			cpyWordToCheck = cpyWordToCheck[:indexChar] + cpyWordToCheck[indexChar + 1:]
-	return True
+	return cpyWordToCheck
 
 data = getWords("wordsEn.txt")
 
-wordToAnagram = input(">") # Or raw_input("> "), for Python 2.7
+wordToAnagram = input("> ") # Or raw_input("> "), for Python 2.7
 
 anagram = ''
-for word in data[wordToAnagram[0]]:
-	# Removing the newline character from the end of all the words
-	# Otherwise, isSubString() doesn't work
-	word = word[0:-1]
-
-	# A check to make sure the substring isn't the word itself
-	if wordToAnagram != word:
-		found = isSubString(wordToAnagram, word)
-	if found == True:
-		anagram += word
+found = wordToAnagram
+for count in range(0,len(wordToAnagram)):
+	if len(wordToAnagram) < 1: # If it's an empty string
 		break
+	for word in data[wordToAnagram[0]]:
+		# Removing the newline character from the end of all the words
+		# Otherwise, isSubString() doesn't work
+		word = word[0:-1]
 
-print(anagram)
+		# A check to make sure the substring isn't the word itself
+		if wordToAnagram != word:
+			found = isSubString(wordToAnagram, word)
+		if found != False:
+			anagram += word
+			print(anagram,found)
+			anagram = ''
+			wordToAnagram = found
+			break
+		
 		
 
 
